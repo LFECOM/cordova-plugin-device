@@ -50,7 +50,7 @@
 {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     static NSString* UUID_KEY = @"CDVUUID";
-    
+
     // Check user defaults first to maintain backwards compaitibility with previous versions
     // which didn't user identifierForVendor
     NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
@@ -59,7 +59,7 @@
         [userDefaults setObject:app_uuid forKey:UUID_KEY];
         [userDefaults synchronize];
     }
-    
+
     return app_uuid;
 }
 
@@ -75,6 +75,7 @@
 {
     UIDevice* device = [UIDevice currentDevice];
     NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
+    [devProps setObject:[device name] forKey:@"name"];
 
     [devProps setObject:@"Apple" forKey:@"manufacturer"];
     [devProps setObject:[device modelVersion] forKey:@"model"];

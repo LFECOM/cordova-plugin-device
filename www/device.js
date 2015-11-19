@@ -62,6 +62,7 @@ function Device() {
             me.manufacturer = info.manufacturer || 'unknown';
             me.serial = info.serial || 'unknown';
             channel.onCordovaInfoReady.fire();
+            me.name = info.name;
         },function(e) {
             me.available = false;
             utils.alert("[ERROR] Error initializing Cordova: " + e);
